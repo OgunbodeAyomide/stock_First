@@ -1,3 +1,4 @@
+'use client';
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -6,9 +7,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "next/navigation";
 
 
-const userDropdown = () => {
+const UserDropdown = () => {
+  const router = useRouter();
   return (
    <DropdownMenu>
   <DropdownMenuTrigger>
@@ -40,12 +43,9 @@ const userDropdown = () => {
     </DropdownMenuItem>
     
     
-    <DropdownMenuItem>
-      {/* Last item (e.g., Logout) */}
-    </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
   )
 }
 
-export default userDropdown
+export default UserDropdown
