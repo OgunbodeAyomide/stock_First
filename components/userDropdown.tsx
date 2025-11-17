@@ -7,25 +7,38 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { Menu } from "lucide-react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
+const UserDropdown = () => {      
+  
+  const router: AppRouterInstance = useRouter();
+
+  const handleSignOut = () => {
+    // Logic to handle user sign out
+    // e.g., clear auth tokens, redirect to login page, etc.
+    router.push('/sign-in'); // Redirect to login page after sign out
+  }
 
 
-const UserDropdown = () => {
-  const router = useRouter();
+  const user = { name: "John Doe", email: "abc@email.com"}; 
+
   return (
    <DropdownMenu>
-  <DropdownMenuTrigger>
-    {/* What users click to open the dropdown - e.g., Avatar or Button */}
+  <DropdownMenuTrigger asChild>
+    <Button variant="ghost" className= "flex items-centergap-3 text-gray-4 hover:text-yellows">
+
+    </Button>
+
+    <button className="p-2 hover:bg-gray-800 rounded-md transition-colors">
+      <Menu className="h-6 w-6 text-gray-400" />
+    </button>
   </DropdownMenuTrigger>
   
   <DropdownMenuContent>
-    {/* The dropdown content that appears */}
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    
-    <DropdownMenuItem>
-      My Account
-    </DropdownMenuItem>
     <DropdownMenuSeparator />
 
     <DropdownMenuItem>
@@ -35,14 +48,14 @@ const UserDropdown = () => {
     <DropdownMenuItem>
       Billing
     </DropdownMenuItem>
+    
     <DropdownMenuItem>
       Team
     </DropdownMenuItem>
+    
     <DropdownMenuItem>
-      Subcription
+      Subscription
     </DropdownMenuItem>
-    
-    
   </DropdownMenuContent>
 </DropdownMenu>
   )
